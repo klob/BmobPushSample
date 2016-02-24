@@ -1,14 +1,22 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
+apply from: rootProject.file('release.gradle')
+
+
+version = '1.0.0'
+int version_code = 1
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.2"
-
+    buildToolsVersion '22.0.1'
+    resourcePrefix "bmobpush_"
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 9
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode version_code
+        versionName version
+
     }
     buildTypes {
         release {
@@ -16,9 +24,78 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'com/j256/ormlite/core/LICENSE.txt'
+        exclude 'com/j256/ormlite/core/README.txt'
+        exclude 'com/j256/ormlite/android/LICENSE.txt'
+        exclude 'com/j256/ormlite/android/README.txt'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    enforceUniquePackageName = false
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.diandi.klob:klob-sdk-ui:1.0.2'
+}
+def siteUrl = 'https://github.com/klob/BmobPushSample'      // 项目的主页
+def gitUrl = 'https://github.com/klob/BmobPushSample.git'
+group = 'com.diandi.klob'
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                // Add your description here
+                name 'bmobpush'  //项目描述
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'klob'       //填写开发者基本信息
+                        name 'klob'
+                        email 'klobic@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+
+
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "maven"  //发布到Bintray的那个仓库里，默认账户有四个库，我们这里上传到maven库
+        name = "bmobpush"  //发布到Bintray上的项目名字
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
 }
