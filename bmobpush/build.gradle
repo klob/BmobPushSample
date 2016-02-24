@@ -45,6 +45,9 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.diandi.klob:klob-sdk-ui:1.0.2'
+    compile 'cn.bmob.android:bmob-sdk:3.4.5'
+    // compile 'cn.bmob.android:bmob-push:0.6'
+    compile 'cn.bmob.android:bmob-im:1.1.9'
 }
 def siteUrl = 'https://github.com/klob/BmobPushSample'      // 项目的主页
 def gitUrl = 'https://github.com/klob/BmobPushSample.git'
