@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BmobPushSample.iml" filepath="$PROJECT_DIR$/BmobPushSample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bmobpush/bmobpush.iml" filepath="$PROJECT_DIR$/bmobpush/bmobpush.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pushsample/pushsample.iml" filepath="$PROJECT_DIR$/pushsample/pushsample.iml" />
+    </modules>
+  </component>
+</project>
