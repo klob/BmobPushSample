@@ -8,7 +8,7 @@
 
 &nbsp;
 
-<span style="font-size: 18pt;"><a href="http://klob.diandi.life/wp-content/uploads/2016/02/BmobPush.png"><img class="alignnone size-full wp-image-250" src="http://klob.diandi.life/wp-content/uploads/2016/02/BmobPush.png" alt="BmobPush" width="326" height="541" /></a></span>
+<span style="font-size: 18pt;"><a href="http://7xiot4.com1.z0.glb.clouddn.com/BmobPush.png"><img class="alignnone size-full wp-image-250" src="http://7xiot4.com1.z0.glb.clouddn.com/BmobPush.png" alt="BmobPush" width="326" height="541" /></a></span>
 
 &nbsp;
 
